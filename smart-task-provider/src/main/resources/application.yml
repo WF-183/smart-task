@@ -1,0 +1,92 @@
+app:
+  id: smart-task
+  scope: inner
+
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application
+
+server:
+  port: 20051
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    connection-timeout: 2s
+
+spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  application:
+    name: ${app.id}
+  profiles:
+    active: locale
+  security:
+    user:
+      name: jindi
+      password: yjyqhyxxcyshys
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  datasource:
+    url: jdbc:mysql://rm-3nsg83up8oh8at30j.mysql.rds.aliyuncs.com:3306
+    username: test_explorer_user
+    password: FNaX0mXuGcf8^Zyv
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+
+
+
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  server:
+    enable-self-preservation: false      # 关闭自我保护模式（默认为打开）
+    eviction-interval-timer-in-ms: 600000  # 续期时间，即扫描失效服务的间隔时间 一分钟
+  client:
+    register-with-eureka: false #注册到注册中心
+    fetch-registry: false #是否去注册中心获取其他服务的地址：是
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8081/eureka/ #注册中心地址
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+ribbon:
+  ReadTimeout: 4000
+  ConnectTimeout: 1000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+
+endpoints:
+  prometheus:
+    id: tyc-metrics
+management:
+  endpoints:
+    web:
+      path-mapping:
+        prometheus: tyc-metrics
+
+#logging:
+#  level:
+#    root: info #日志级别
+#  file: #在控制台输出日志的同时输出到指定文件
+#    name: /Users/wangfei/Downloads/spring-dev.log #文件路径
+

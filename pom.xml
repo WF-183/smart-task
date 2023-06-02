@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- springboot版本设置-part2   -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+    </parent>
+
+
+    <groupId>com.code.maker</groupId>
+    <artifactId>smart-task</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>smart-task-api</module>
+        <module>smart-task-provider</module>
+    </modules>
+
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <push.image>false</push.image>
+        <project.finalName>${project.artifactId}-${project.version}</project.finalName>
+
+        <logback.version>1.2.10</logback.version>
+        <sharding-jdbc.version>2.0.3</sharding-jdbc.version>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <blockchain.commons.version>1.0.0-SNAPSHOT</blockchain.commons.version>
+        <lombok.version>1.18.24</lombok.version>
+        <jsoup.version>1.11.3</jsoup.version>
+        <jackson.version>2.13.2</jackson.version>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
+        <netty.version>4.1.65.Final</netty.version>
+        <commons.collections4.version>4.2</commons.collections4.version>
+        <disruptor.version>3.4.4</disruptor.version>
+        <dynamic.datasource.version>2.4.2</dynamic.datasource.version>
+        <maven.test.skip>true</maven.test.skip>
+        <okcoin.bafang.aliyun.core.version>3.2.2</okcoin.bafang.aliyun.core.version>
+        <aliyun-sdk-oss.version>3.1.0</aliyun-sdk-oss.version>
+        <okhttp3.version>4.9.3</okhttp3.version>
+        <web3jversion>4.8.6</web3jversion>
+        <fusesource.leveldbjni.version>1.8</fusesource.leveldbjni.version>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <spring-boot.log4j2.version>2.6.4</spring-boot.log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
+        <jedis.version>3.3.0</jedis.version>
+        <lettuce.version>6.1.8.RELEASE</lettuce.version>
+        <commons-compress.version>1.18</commons-compress.version>
+        <mybatis.spring.boot.version>2.2.0</mybatis.spring.boot.version>
+        <java-version>1.8</java-version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <alibaba.fastjson.version>1.2.83</alibaba.fastjson.version>
+        <bcprov-jdk15on.version>1.61</bcprov-jdk15on.version>
+        <encoding>UTF-8</encoding>
+        <kafka.version>3.4.0</kafka.version>
+        <mybatis.version>3.5.8</mybatis.version>
+        <curator.version>5.2.0</curator.version>
+        <micrometer.version>1.8.1</micrometer.version>
+        <elasticsearch.version>6.6.2</elasticsearch.version>
+        <guava.version>31.1-jre</guava.version>
+        <alibaba.druid.version>1.2.8</alibaba.druid.version>
+        <commons.io.version>2.11.0</commons.io.version>
+        <caffeine.version>2.9.3</caffeine.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <!-- springboot版本设置-part1   -->
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- springcloud版本设置-part1   -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <!--   PART 必备依赖    -->
+        <!--  springcloud版本设置-part2  cloud各种组件：eureka、 feign 、hystrix  、actuator ，都将使用spring-cloud-dependencies中指定版本  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-openfeign-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <!-- springboot版本设置-part3  各种spring-boot-xxx-starter，都将使用spring-boot-dependencies中指定版本  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <!--  基础依赖      -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+
+        <!--   PART 功能依赖    -->
+
+        <!--  lombok      -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+        </dependency>
+
+        <!--  工具库      -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+        <!-- 日志       -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${spring-boot.log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jul</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+
+    </dependencies>
+
+
+</project>
