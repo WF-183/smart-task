@@ -32,12 +32,14 @@ spring:
     serialization:
       write-dates-as-timestamps: true
   datasource:
-    url: jdbc:mysql://rm-3nsg83up8oh8at30j.mysql.rds.aliyuncs.com:3306
+    url: jdbc:mysql://rm-3nsg83up8oh8at30j.mysql.rds.aliyuncs.com:3306/blockchain_tracker?allowMultiQueries=true&useServerPrepStmts=true&characterEncoding=utf-8
     username: test_explorer_user
     password: FNaX0mXuGcf8^Zyv
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-
+    druid:
+      test-on-borrow: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 3600000
 
 
 
