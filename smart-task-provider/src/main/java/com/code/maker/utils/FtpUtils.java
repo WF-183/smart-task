@@ -287,5 +287,13 @@ public class FtpUtils {
         return flag;
     }
 
+    /**
+     *
+     *
+     *
+     *
+     *
+     */
+
 
 }
